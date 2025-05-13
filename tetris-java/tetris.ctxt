@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=tetris
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ tetris\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=tetris()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ tetris\r\n
+comment2.params=
+comment2.target=void\ clearBoard()
+comment3.params=
+comment3.target=void\ setup()
+comment4.params=g
+comment4.target=void\ paint(java.awt.Graphics)
+comment5.params=
+comment5.target=void\ controlBlocks()
+comment6.params=
+comment6.target=void\ addBlocks()
+comment7.params=
+comment7.target=void\ moveBlocks()
+comment8.params=x\ y
+comment8.target=void\ drawSquare(int,\ int)
+numComments=9

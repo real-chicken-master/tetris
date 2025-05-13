@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2025-04-28" view-index="0" gantt-divider-location="536" resource-divider-location="300" version="3.3.3300" locale="en_NZ">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Name" width="296" order="0"/>
+        <field id="tpd4" name="Begin date" width="112" order="1"/>
+        <field id="tpd5" name="End date" width="112" order="2"/>
+        <field id="tpd15" name="Notes" width="20" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#33ccff #333333 #66ff66 #f4f4f4 #ff33ff]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" uid="6943fb2d5ffd42ba83f8fc52393af403" name="make Tetris" color="#333333" meeting="false" start="2025-05-05" duration="19" complete="0" thirdDate="2025-05-01" thirdDate-constraint="0" expand="true">
+            <depend id="25" type="2" difference="0" hardness="Strong"/>
+            <task id="1" uid="203c5a28b7b64f3bb97b462fde4f92d2" name="make background and 2d array" color="#33ccff" meeting="false" start="2025-05-05" duration="2" complete="0" thirdDate="2025-05-01" thirdDate-constraint="0" expand="true">
+                <depend id="2" type="2" difference="0" hardness="Strong"/>
+                <task id="7" uid="3dbd72d5145a4ca9ac139e635bfdc575" name="make 2d array" color="#66ff66" meeting="false" start="2025-05-05" duration="1" complete="0" thirdDate="2025-04-30" thirdDate-constraint="0" expand="true">
+                    <depend id="8" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="8" uid="e1b5484740cf44fab68212bbd08ee65f" name="background" color="#66ff66" meeting="false" start="2025-05-06" duration="1" complete="0" thirdDate="2025-05-01" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="2" uid="68cfdf1ad413493b899c1f5294c2ee65" name="make square block and add gravity" color="#33ccff" meeting="false" start="2025-05-07" duration="3" complete="0" thirdDate="2025-05-01" thirdDate-constraint="0" expand="true">
+                <depend id="28" type="2" difference="0" hardness="Strong"/>
+                <task id="9" uid="e35e2ef1ea6c4eefbc50767b33f8c562" name="make square block" color="#66ff66" meeting="false" start="2025-05-07" duration="1" complete="0" thirdDate="2025-05-02" thirdDate-constraint="0" expand="true">
+                    <depend id="10" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="10" uid="957e38d2f8714c2c947af6e8d9c02fcb" name="add gravity" color="#66ff66" meeting="false" start="2025-05-08" duration="1" complete="0" thirdDate="2025-05-02" thirdDate-constraint="0" expand="true">
+                    <depend id="11" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="11" uid="9664710140d4484c825bb119d73cd160" name="add ground" color="#66ff66" meeting="false" start="2025-05-09" duration="1" complete="0" thirdDate="2025-05-06" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="28" uid="4046862d988b493295bc9b6205de447f" name="make collisions" color="#33ccff" meeting="false" start="2025-05-12" duration="1" complete="0" thirdDate="2025-05-02" thirdDate-constraint="0" expand="true">
+                <depend id="6" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="6" uid="2743e6bc638a44d0b136f9613a016821" name="add rotate and move block" color="#33ccff" meeting="false" start="2025-05-13" duration="2" complete="0" thirdDate="2025-04-30" thirdDate-constraint="0" expand="true">
+                <depend id="3" type="2" difference="0" hardness="Strong"/>
+                <task id="12" uid="647f35cc84e54018923db6e244595f7a" name="add block rotate" color="#66ff66" meeting="false" start="2025-05-13" duration="1" complete="0" thirdDate="2025-05-07" thirdDate-constraint="0" expand="true">
+                    <depend id="13" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="13" uid="e2e9938324fd42e79030f30aa47dd9f0" name="add block move" color="#66ff66" meeting="false" start="2025-05-14" duration="1" complete="0" thirdDate="2025-05-08" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="3" uid="55f3eec5a27a4ed8ba4963b5ec7a9941" name="make other blocks and blocklist" color="#33ccff" meeting="false" start="2025-05-15" duration="7" complete="0" thirdDate="2025-05-05" thirdDate-constraint="0" expand="true">
+                <depend id="4" type="2" difference="0" hardness="Strong"/>
+                <task id="14" uid="bf8bd6c32ba143a2b8d03d604cd3ac7d" name="make the T block" color="#66ff66" meeting="false" start="2025-05-15" duration="1" complete="0" thirdDate="2025-05-09" thirdDate-constraint="0" expand="true">
+                    <depend id="15" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="15" uid="ecaa503abada4f0e83b748b439eb8797" name="make th L block" color="#66ff66" meeting="false" start="2025-05-16" duration="1" complete="0" thirdDate="2025-05-12" thirdDate-constraint="0" expand="true">
+                    <depend id="16" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="16" uid="cbab59149b0c4b57996ec7257aa5fc19" name="make the backwards L block" color="#66ff66" meeting="false" start="2025-05-19" duration="1" complete="0" thirdDate="2025-05-13" thirdDate-constraint="0" expand="true">
+                    <depend id="22" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="22" uid="344b3560c80e4120b5c8741f165318fd" name="make the l block" color="#66ff66" meeting="false" start="2025-05-20" duration="1" complete="0" thirdDate="2025-05-14" thirdDate-constraint="0" expand="true">
+                    <depend id="23" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="23" uid="b5869c10daa94bc9838c7b9e09263707" name="make the z block" color="#66ff66" meeting="false" start="2025-05-21" duration="1" complete="0" thirdDate="2025-05-15" thirdDate-constraint="0" expand="true">
+                    <depend id="24" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="24" uid="8d59057a0034488fb8881321ef701cfd" name="make the backwards z block" color="#66ff66" meeting="false" start="2025-05-22" duration="1" complete="0" thirdDate="2025-05-16" thirdDate-constraint="0" expand="true">
+                    <depend id="17" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="17" uid="2de201cd3ca34bbbb2c2f003769b41f7" name="make the blocklist" color="#66ff66" meeting="false" start="2025-05-23" duration="1" complete="0" thirdDate="2025-05-14" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="4" uid="d74ad0826250467eb80da2ed9b969747" name="make game over and make lines disapear" color="#33ccff" meeting="false" start="2025-05-26" duration="2" complete="0" thirdDate="2025-05-06" thirdDate-constraint="0" expand="true">
+                <depend id="5" type="2" difference="0" hardness="Strong"/>
+                <task id="18" uid="c6ebe804bbd04ebdb9434408891cc86e" name="add game over" color="#66ff66" meeting="false" start="2025-05-26" duration="1" complete="0" thirdDate="2025-05-20" thirdDate-constraint="0" expand="true">
+                    <depend id="19" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="19" uid="3cfdeb8e915546d7bf1783e38925954e" name="make lines disapair" color="#66ff66" meeting="false" start="2025-05-27" duration="1" complete="0" thirdDate="2025-05-14" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="5" uid="e45bb585011f42b389056ceed8b226ec" name="add score and highscore" color="#33ccff" meeting="false" start="2025-05-28" duration="2" complete="0" thirdDate="2025-05-07" thirdDate-constraint="0" expand="true">
+                <task id="20" uid="c7ab611c0e6446b1b61fd1a460d46bbb" name="add score" color="#66ff66" meeting="false" start="2025-05-28" duration="1" complete="0" thirdDate="2025-05-22" thirdDate-constraint="0" expand="true">
+                    <depend id="21" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="21" uid="1cbc7d16a2db4cc4aa79eec5383e3603" name="add highscore" color="#66ff66" meeting="false" start="2025-05-29" duration="1" complete="0" thirdDate="2025-05-23" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+        <task id="25" uid="e38b54fde75146a9a088e0b42111ae69" name="test" color="#333333" meeting="false" start="2025-05-30" duration="2" complete="0" thirdDate="2025-04-28" thirdDate-constraint="0" expand="true">
+            <task id="26" uid="f90eb3106135414db9ad7c54f75c56f1" name="test" color="#33ccff" meeting="false" start="2025-05-30" duration="1" complete="0" thirdDate="2025-05-26" thirdDate-constraint="0" expand="true">
+                <depend id="27" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="27" uid="78c6cb61431946ba8ad9d83064249711" name="debug" color="#33ccff" meeting="false" start="2025-06-02" duration="1" complete="0" thirdDate="2025-05-27" thirdDate-constraint="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
