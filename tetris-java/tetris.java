@@ -16,7 +16,7 @@ public class tetris extends gui
     int tetrisWidth = 10;
     int tetrisHeight = 20;
     private ImageIcon ImageArray[][] = new ImageIcon [tetrisWidth][tetrisHeight];
-    String PlacedBlockArray[][] = new String  [tetrisWidth][tetrisHeight];
+    ImageIcon PlacedBlockArray[][] = new ImageIcon  [tetrisWidth][tetrisHeight];
     private int boardWidth = windowLength/3;
     private int boardX = (windowLength-boardWidth)/2;
     String FallingBlock = "empty";
@@ -38,13 +38,17 @@ public class tetris extends gui
         for(int x=0; x<tetrisWidth; x++){
             for(int y=0; y<tetrisHeight; y++){
                 ImageArray[x][y] = BlackSquare;
-                PlacedBlockArray[x][y] = "empty";
             }
         }
     }
 
     private void setup(){
-        clearBoard();
+        for(int x=0; x<tetrisWidth; x++){
+            for(int y=0; y<tetrisHeight; y++){
+                ImageArray[x][y] = BlackSquare;
+                PlacedBlockArray[x][y] = BlackSquare;
+            }
+        }
     }
 
     public void paint (Graphics g){
@@ -81,8 +85,26 @@ public class tetris extends gui
     }
 
     void moveBlocks(){
-        FallingBlockY += 0.01;
-        drawSquare((int)FallingBlockX,(int)FallingBlockY);
+        if(FallingBlock == "Square"){
+            if(squareCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
+                FallingBlockY += 0.01;
+                drawSquare((int)FallingBlockX,(int)FallingBlockY);
+            }else{
+                BlockFalling = false;
+            }
+        }
+    }
+
+    boolean squareCollisionCheck(int x, int y){
+        try{
+            if(PlacedBlockArray[x][y+1] == BlackSquare){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception e){
+            return false;
+        }
     }
 
     void drawSquare(int x, int y){
