@@ -15,7 +15,7 @@ public class tetris extends gui
     // instance variables - replace the example below with your own
     int tetrisWidth = 10;
     int tetrisHeight = 20;
-    private ImageIcon ImageArray[][] = new ImageIcon [tetrisWidth][tetrisHeight];
+    private ImageIcon ImageArray[][] = new ImageIcon [tetrisWidth][tetrisHeight+1];
     ImageIcon PlacedBlockArray[][] = new ImageIcon  [tetrisWidth][tetrisHeight];
     private int boardWidth = windowLength/3;
     private int boardX = (windowLength-boardWidth)/2;
@@ -99,8 +99,9 @@ public class tetris extends gui
         if(FallingBlock == "Square"){
             if(squareCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
                 FallingBlockY += 0.1;
-                drawSquare((int)FallingBlockX,(int)FallingBlockY);
+                drawSquare((int)FallingBlockX,(int)FallingBlockY,false);
             }else{
+                drawSquare((int)FallingBlockX,(int)FallingBlockY,true);
                 BlockFalling = false;
             }
         }
@@ -111,6 +112,7 @@ public class tetris extends gui
             if(ImageArray[x][y+1] == BlackSquare){
                 return true;
             }else{
+                System.out.println("test");
                 return false;
             }
         }catch(Exception e){
@@ -118,13 +120,13 @@ public class tetris extends gui
         }
     }
 
-    void drawSquare(int x, int y){
-        try{
+    void drawSquare(int x, int y, boolean place){
+        if(!place){
             ImageArray[x][y] = BlueSquare;
             ImageArray[x+1][y] = BlueSquare;
             ImageArray[x+1][y+1] = BlueSquare;
             ImageArray[x][y+1] = BlueSquare;
-        }catch(Exception e){
+        }else{
             PlacedBlockArray[x][y] = BlueSquare;
             PlacedBlockArray[x][y-1] = BlueSquare;
             PlacedBlockArray[x+1][y-1] = BlueSquare;
