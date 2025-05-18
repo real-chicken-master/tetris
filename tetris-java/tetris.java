@@ -27,7 +27,7 @@ public class tetris extends gui
      * Constructor for objects of class tetris
      */
     public tetris()
-    {   
+    {  
         setup();
         while(true){
             repaint();
@@ -53,6 +53,7 @@ public class tetris extends gui
 
     public void paint (Graphics g){
         clearBoard();
+        ShowPlacedBlocks();
         controlBlocks();
         offScreenImage = new BufferedImage(windowLength+10 ,windowHeight+100,BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) offScreenImage.getGraphics();
@@ -68,7 +69,11 @@ public class tetris extends gui
         }
         g.drawImage(offScreenImage,0,0,null);
     }
-
+    
+    void ShowPlacedBlocks(){
+    
+    }
+    
     void controlBlocks(){
         if(BlockFalling){
             moveBlocks();
@@ -87,7 +92,7 @@ public class tetris extends gui
     void moveBlocks(){
         if(FallingBlock == "Square"){
             if(squareCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
-                FallingBlockY += 0.01;
+                FallingBlockY += 0.1;
                 drawSquare((int)FallingBlockX,(int)FallingBlockY);
             }else{
                 BlockFalling = false;
@@ -108,9 +113,13 @@ public class tetris extends gui
     }
 
     void drawSquare(int x, int y){
-        ImageArray[x][y] = BlueSquare;
-        ImageArray[x+1][y] = BlueSquare;
-        ImageArray[x+1][y+1] = BlueSquare;
-        ImageArray[x][y+1] = BlueSquare;
+        try{
+            ImageArray[x][y] = BlueSquare;
+            ImageArray[x+1][y] = BlueSquare;
+            ImageArray[x+1][y+1] = BlueSquare;
+            ImageArray[x][y+1] = BlueSquare;
+        }catch(Exception e){
+            PlacedBlockArray[x][y] = BlueSquare;
+        }
     }
 }
