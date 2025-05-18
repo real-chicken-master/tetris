@@ -69,11 +69,17 @@ public class tetris extends gui
         }
         g.drawImage(offScreenImage,0,0,null);
     }
-    
+
     void ShowPlacedBlocks(){
-    
+        for(int x=0; x<tetrisWidth; x++){
+            for(int y=0; y<tetrisHeight; y++){
+                if(PlacedBlockArray[x][y] != BlackSquare){
+                    ImageArray[x][y] = PlacedBlockArray[x][y];
+                }
+            }
+        }
     }
-    
+
     void controlBlocks(){
         if(BlockFalling){
             moveBlocks();
@@ -102,7 +108,7 @@ public class tetris extends gui
 
     boolean squareCollisionCheck(int x, int y){
         try{
-            if(PlacedBlockArray[x][y+1] == BlackSquare){
+            if(ImageArray[x][y+1] == BlackSquare){
                 return true;
             }else{
                 return false;
@@ -120,6 +126,9 @@ public class tetris extends gui
             ImageArray[x][y+1] = BlueSquare;
         }catch(Exception e){
             PlacedBlockArray[x][y] = BlueSquare;
+            PlacedBlockArray[x][y-1] = BlueSquare;
+            PlacedBlockArray[x+1][y-1] = BlueSquare;
+            PlacedBlockArray[x+1][y] = BlueSquare;
         }
     }
 }
