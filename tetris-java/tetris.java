@@ -23,13 +23,16 @@ public class tetris extends gui
     double FallingBlockX;
     double FallingBlockY;
     boolean BlockFalling = false;
+    double baseSpeed = 0.03;
+    double speed = 0.1;
+    boolean gameover = false;
     /**
      * Constructor for objects of class tetris
      */
     public tetris()
     {  
         setup();
-        while(true){
+        while(!gameover){
             repaint();
         }
     }
@@ -98,7 +101,7 @@ public class tetris extends gui
     void moveBlocks(){
         if(FallingBlock == "Square"){
             if(squareCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
-                FallingBlockY += 0.1;
+                FallingBlockY += speed;
                 drawSquare((int)FallingBlockX,(int)FallingBlockY,false);
             }else{
                 drawSquare((int)FallingBlockX,(int)FallingBlockY,true);
@@ -112,7 +115,6 @@ public class tetris extends gui
             if(ImageArray[x][y+1] == BlackSquare){
                 return true;
             }else{
-                System.out.println("test");
                 return false;
             }
         }catch(Exception e){
@@ -127,10 +129,14 @@ public class tetris extends gui
             ImageArray[x+1][y+1] = BlueSquare;
             ImageArray[x][y+1] = BlueSquare;
         }else{
-            PlacedBlockArray[x][y] = BlueSquare;
-            PlacedBlockArray[x][y-1] = BlueSquare;
-            PlacedBlockArray[x+1][y-1] = BlueSquare;
-            PlacedBlockArray[x+1][y] = BlueSquare;
+            if(y>0){
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y-1] = BlueSquare;
+                PlacedBlockArray[x+1][y-1] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+            }else{
+                gameover = true;
+            }
         }
     }
 }
