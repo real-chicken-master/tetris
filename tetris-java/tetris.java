@@ -3,6 +3,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import java.awt.event.*;
 
 /**
  * Write a description of class tetris here.
@@ -24,13 +25,14 @@ public class tetris extends gui
     double FallingBlockY;
     boolean BlockFalling = false;
     double baseSpeed = 0.03;
-    double speed = 0.1;
+    double speed = baseSpeed;
     boolean gameover = false;
     /**
      * Constructor for objects of class tetris
      */
     public tetris()
     {  
+        addKeyListener(new MyClass());
         setup();
         while(!gameover){
             repaint();
@@ -112,7 +114,7 @@ public class tetris extends gui
 
     boolean squareCollisionCheck(int x, int y){
         try{
-            if(ImageArray[x][y+1] == BlackSquare){
+            if(ImageArray[x][y+1] == BlackSquare && ImageArray[x+1][y+1] == BlackSquare){
                 return true;
             }else{
                 return false;
@@ -136,6 +138,37 @@ public class tetris extends gui
                 PlacedBlockArray[x+1][y] = BlueSquare;
             }else{
                 gameover = true;
+            }
+        }
+    }
+
+    public class MyClass  implements KeyListener {
+        public void keyTyped(KeyEvent e) {
+            // Invoked when a key has been typed.
+        }
+
+        public void keyPressed(KeyEvent e) {
+            // Invoked when a key has been pressed.
+            if (e.getKeyCode() == KeyEvent.VK_A) {
+                if(FallingBlockX > 0){
+                    FallingBlockX -= 1;
+                }
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_D) {
+                if(FallingBlockX < tetrisWidth-2){
+                    FallingBlockX += 1;
+                }
+            }
+            
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                speed = 0.5;
+            }
+        }
+
+        public void keyReleased(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                speed = 0.03;
             }
         }
     }
