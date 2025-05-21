@@ -149,25 +149,25 @@ public class tetris extends gui
 
         public void keyPressed(KeyEvent e) {
             // Invoked when a key has been pressed.
-            if (e.getKeyCode() == KeyEvent.VK_A) {
+            if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT) {
                 if(FallingBlockX > 0){
                     FallingBlockX -= 1;
                 }
             }
 
-            if (e.getKeyCode() == KeyEvent.VK_D) {
+            if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 if(FallingBlockX < tetrisWidth-2){
                     FallingBlockX += 1;
                 }
             }
             
-            if (e.getKeyCode() == KeyEvent.VK_S) {
+            if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_UP) {
                 speed = 0.5;
             }
         }
 
         public void keyReleased(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_S) {
+            if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) {
                 speed = 0.03;
             }
         }
