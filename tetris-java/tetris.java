@@ -27,6 +27,7 @@ public class tetris extends gui
     double baseSpeed = 0.03;
     double speed = baseSpeed;
     boolean gameover = false;
+    int rotation = 1; //1-4
     /**
      * Constructor for objects of class tetris
      */
@@ -160,9 +161,25 @@ public class tetris extends gui
                     FallingBlockX += 1;
                 }
             }
-            
-            if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_UP) {
+
+            if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) {
                 speed = 0.5;
+            }
+
+            if (e.getKeyCode() == KeyEvent.VK_Q) {
+                if(rotation < 4){
+                    rotation += 1;
+                }else{
+                    rotation = 1;
+                }
+            }
+            
+            if (e.getKeyCode() == KeyEvent.VK_E) {
+                if(rotation > 1){
+                    rotation -= 1;
+                }else{
+                    rotation = 4;
+                }
             }
         }
 
