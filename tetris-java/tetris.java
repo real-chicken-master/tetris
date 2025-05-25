@@ -61,6 +61,7 @@ public class tetris extends gui
         clearBoard();
         ShowPlacedBlocks();
         controlBlocks();
+        checkLines();
         offScreenImage = new BufferedImage(windowLength+10 ,windowHeight+100,BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) offScreenImage.getGraphics();
         //white background
@@ -76,6 +77,25 @@ public class tetris extends gui
         g.drawImage(offScreenImage,0,0,null);
     }
 
+    void checkLines(){
+        for(int y=0; y<tetrisHeight; y++){
+            boolean isLine = true;
+            for(int x=0; x<tetrisWidth; x++){
+                if(PlacedBlockArray[x][y] == BlackSquare){
+                    isLine = false;
+                }
+            }
+            if(isLine){
+                removeLine(y);
+            }
+        }
+    }
+    
+    void removeLine(int y){
+    
+    }
+    
+    
     void ShowPlacedBlocks(){
         for(int x=0; x<tetrisWidth; x++){
             for(int y=0; y<tetrisHeight; y++){
@@ -152,13 +172,17 @@ public class tetris extends gui
             // Invoked when a key has been pressed.
             if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT) {
                 if(FallingBlockX > 0){
-                    FallingBlockX -= 1;
+                    if(PlacedBlockArray[(int)FallingBlockX-1][(int)FallingBlockY] == BlackSquare){
+                        FallingBlockX -= 1;
+                    }
                 }
             }
 
             if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 if(FallingBlockX < tetrisWidth-2){
-                    FallingBlockX += 1;
+                    if(PlacedBlockArray[(int)FallingBlockX+1][(int)FallingBlockY] == BlackSquare){
+                        FallingBlockX += 1;
+                    }
                 }
             }
 
@@ -173,7 +197,7 @@ public class tetris extends gui
                     rotation = 1;
                 }
             }
-            
+
             if (e.getKeyCode() == KeyEvent.VK_E) {
                 if(rotation > 1){
                     rotation -= 1;
