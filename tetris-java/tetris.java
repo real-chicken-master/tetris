@@ -64,8 +64,8 @@ public class tetris extends gui
         controlBlocks();
         offScreenImage = new BufferedImage(windowLength+10 ,windowHeight+100,BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) offScreenImage.getGraphics();
-        //white background
-        g2.setColor(new Color(255,255,255));
+        //grey background
+        g2.setColor(new Color(200,200,200));
         g2.fillRect(0,0,windowLength+10,windowHeight+100);
         //tetris background
         g2.setColor(new Color(0,0,0));
@@ -90,7 +90,7 @@ public class tetris extends gui
             }
         }
     }
-    
+
     void removeLine(int y){
         for(int x=0; x<tetrisWidth; x++){
             PlacedBlockArray[x][y] = BlackSquare;
@@ -102,8 +102,7 @@ public class tetris extends gui
             PlacedBlockArray[x][y-1] = BlackSquare;
         }
     }
-    
-    
+
     void ShowPlacedBlocks(){
         for(int x=0; x<tetrisWidth; x++){
             for(int y=0; y<tetrisHeight; y++){
@@ -125,7 +124,8 @@ public class tetris extends gui
     void addBlocks(){
         FallingBlockY = 0;
         FallingBlockX = 4;
-        FallingBlock = "Square";
+        FallingBlock = "L";
+        rotation = 1;
         BlockFalling = true;
     }
 
@@ -139,9 +139,37 @@ public class tetris extends gui
                 BlockFalling = false;
             }
         }
+        if(FallingBlock == "L"){
+            if(LCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
+                FallingBlockY += speed;
+                drawL((int)FallingBlockX,(int)FallingBlockY,false);
+            }else{
+                drawL((int)FallingBlockX,(int)FallingBlockY,true);
+                BlockFalling = false;
+            }
+        }
     }
 
-    boolean squareCollisionCheck(int x, int y){
+    //L block functions
+    void drawL(int x, int y, boolean place){
+        if(!place){
+            ImageArray[x][y] = BlueSquare;
+            ImageArray[x][y+1] = BlueSquare;
+            ImageArray[x][y+2] = BlueSquare;
+            ImageArray[x+1][y+2] = BlueSquare;
+        }else{
+            if(y>0){
+                PlacedBlockArray[x][y-2] = BlueSquare;
+                PlacedBlockArray[x][y-1] = BlueSquare;
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+            }else{
+                gameover = true;
+            }
+        }
+    }
+
+    boolean LCollisionCheck(int x, int y){
         try{
             if(ImageArray[x][y+1] == BlackSquare && ImageArray[x+1][y+1] == BlackSquare){
                 return true;
@@ -153,6 +181,7 @@ public class tetris extends gui
         }
     }
 
+    //square block functions
     void drawSquare(int x, int y, boolean place){
         if(!place){
             ImageArray[x][y] = BlueSquare;
@@ -171,6 +200,19 @@ public class tetris extends gui
         }
     }
 
+    boolean squareCollisionCheck(int x, int y){
+        try{
+            if(ImageArray[x][y+1] == BlackSquare && ImageArray[x+1][y+1] == BlackSquare){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception e){
+            return false;
+        }
+    }
+
+    // key listener for controls
     public class MyClass  implements KeyListener {
         public void keyTyped(KeyEvent e) {
             // Invoked when a key has been typed.
