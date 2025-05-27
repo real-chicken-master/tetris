@@ -59,9 +59,9 @@ public class tetris extends gui
 
     public void paint (Graphics g){
         clearBoard();
+        checkLines();
         ShowPlacedBlocks();
         controlBlocks();
-        checkLines();
         offScreenImage = new BufferedImage(windowLength+10 ,windowHeight+100,BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) offScreenImage.getGraphics();
         //white background
@@ -92,7 +92,15 @@ public class tetris extends gui
     }
     
     void removeLine(int y){
-    
+        for(int x=0; x<tetrisWidth; x++){
+            PlacedBlockArray[x][y] = BlackSquare;
+        }
+        for(int x=0; x<tetrisWidth; x++){
+            PlacedBlockArray[x][y] = PlacedBlockArray[x][y-1];
+        }
+        for(int x=0; x<tetrisWidth; x++){
+            PlacedBlockArray[x][y-1] = BlackSquare;
+        }
     }
     
     
