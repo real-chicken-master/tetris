@@ -92,15 +92,18 @@ public class tetris extends gui
     }
 
     void removeLine(int y){
-        for(int x=0; x<tetrisWidth; x++){
-            PlacedBlockArray[x][y] = BlackSquare;
+        for (int numy=y; numy > 0;numy--){
+            for(int x=0; x<tetrisWidth; x++){
+                if(PlacedBlockArray[x][numy-1].equals(BlackSquare)){
+                    PlacedBlockArray[x][numy] = BlackSquare;
+                }
+                if(PlacedBlockArray[x][numy-1].equals(BlueSquare)){
+                    PlacedBlockArray[x][numy] = BlueSquare;
+                }
+            }
         }
-        for(int x=0; x<tetrisWidth; x++){
-            PlacedBlockArray[x][y] = PlacedBlockArray[x][y-1];
-        }
-        for(int x=0; x<tetrisWidth; x++){
-            PlacedBlockArray[x][y-1] = BlackSquare;
-        }
+        clearBoard();
+        ShowPlacedBlocks();
     }
 
     void ShowPlacedBlocks(){
@@ -124,7 +127,7 @@ public class tetris extends gui
     void addBlocks(){
         FallingBlockY = 0;
         FallingBlockX = 4;
-        FallingBlock = "L";
+        FallingBlock = "Square";
         rotation = 1;
         BlockFalling = true;
     }
@@ -135,8 +138,8 @@ public class tetris extends gui
                 FallingBlockY += speed;
                 drawSquare((int)FallingBlockX,(int)FallingBlockY,false);
             }else{
-                drawSquare((int)FallingBlockX,(int)FallingBlockY,true);
                 BlockFalling = false;
+                drawSquare((int)FallingBlockX,(int)FallingBlockY,true);
             }
         }
         if(FallingBlock == "L"){
@@ -144,8 +147,8 @@ public class tetris extends gui
                 FallingBlockY += speed;
                 drawL((int)FallingBlockX,(int)FallingBlockY,false);
             }else{
-                drawL((int)FallingBlockX,(int)FallingBlockY,true);
                 BlockFalling = false;
+                drawL((int)FallingBlockX,(int)FallingBlockY,true);
             }
         }
     }
