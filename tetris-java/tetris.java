@@ -225,7 +225,6 @@ public class tetris extends gui
 
     //L block collision
     boolean LDownCollisionCheck(int x, int y){
-        System.out.println(rotation);
         try{
             if(rotation == 1){
                 if(ImageArray[x][y+2] == BlackSquare && ImageArray[x+1][y+2] == BlackSquare && ImageArray[x][y+2] == BlackSquare){
@@ -306,9 +305,14 @@ public class tetris extends gui
 
             if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 if(BlockFalling){
-                    boolean canMoveRight = false;
+                    boolean canMoveRight = true;
                     for(int y = 0; y < tetrisHeight; y++){
-                        ;
+                        if(ImageArray[tetrisWidth-1][y] == BlueSquare){
+                            if(PlacedBlockArray[tetrisWidth-1][y] != BlueSquare){
+                                canMoveRight = false;
+                                System.out.println("test");
+                            }
+                        }
                     }
                     if(canMoveRight){
                         FallingBlockX += 1;
