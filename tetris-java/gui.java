@@ -18,7 +18,7 @@ public class gui extends JFrame implements ActionListener {
     Canvas screen;
     BufferedImage offScreenImage;
     int windowHeight = 800;
-    int windowLength = 1310;
+    int windowLength = 800;
     int imageHeight = 40;
     int imageWidth = 40;
     ImageIcon BlackSquare =  new ImageIcon(new ImageIcon("images/BlackSquare.PNG").getImage().getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT));

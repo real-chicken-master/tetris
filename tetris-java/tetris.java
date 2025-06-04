@@ -70,7 +70,7 @@ public class tetris extends gui
         g2.setColor(new Color(0,0,0));
         for(int x=0; x<tetrisWidth; x++){
             for(int y=0; y<tetrisHeight; y++){
-                ImageArray[x][y].paintIcon(this,g2,100+x*imageWidth,y*imageHeight+imageHeight);
+                ImageArray[x][y].paintIcon(this,g2,((windowLength/2)-(20*tetrisWidth))+x*imageWidth,y*imageHeight+imageHeight);
             }
         }
         g.drawImage(offScreenImage,0,0,null);
@@ -86,6 +86,11 @@ public class tetris extends gui
             }
             if(isLine){
                 removeLine(y);
+            }
+        }
+        for(int x=0; x<tetrisWidth; x++){
+            if(PlacedBlockArray[x][0] == BlueSquare){
+
             }
         }
     }
@@ -134,7 +139,7 @@ public class tetris extends gui
 
     void moveBlocks(){
         if(FallingBlock == "Square"){
-            if(squareCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
+            if(squareDownCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
                 FallingBlockY += speed;
                 drawSquare((int)FallingBlockX,(int)FallingBlockY,false);
             }else{
@@ -143,7 +148,7 @@ public class tetris extends gui
             }
         }
         if(FallingBlock == "L"){
-            if(LCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
+            if(LDownCollisionCheck((int)FallingBlockX,(int)FallingBlockY)){
                 FallingBlockY += speed;
                 drawL((int)FallingBlockX,(int)FallingBlockY,false);
             }else{
@@ -154,6 +159,7 @@ public class tetris extends gui
     }
 
     //L block functions
+    //draw L block
     void drawL(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
@@ -163,12 +169,10 @@ public class tetris extends gui
                 ImageArray[x+1][y+2] = BlueSquare;
             }else{
                 if(y>0){
-                    PlacedBlockArray[x][y-2] = BlueSquare;
                     PlacedBlockArray[x][y-1] = BlueSquare;
                     PlacedBlockArray[x][y] = BlueSquare;
-                    PlacedBlockArray[x+1][y] = BlueSquare;
-                }else{
-                    gameover = true;
+                    PlacedBlockArray[x][y+1] = BlueSquare;
+                    PlacedBlockArray[x+1][y+1] = BlueSquare;
                 }
             }
         }
@@ -184,8 +188,6 @@ public class tetris extends gui
                     PlacedBlockArray[x-1][y] = BlueSquare;
                     PlacedBlockArray[x+1][y] = BlueSquare;
                     PlacedBlockArray[x+1][y-1] = BlueSquare;
-                }else{
-                    gameover = true;
                 }
             }
         }
@@ -197,12 +199,10 @@ public class tetris extends gui
                 ImageArray[x][y] = BlueSquare;
             }else{
                 if(y>0){
-                    PlacedBlockArray[x+1][y-2] = BlueSquare;
                     PlacedBlockArray[x+1][y-1] = BlueSquare;
                     PlacedBlockArray[x+1][y] = BlueSquare;
-                    PlacedBlockArray[x][y-2] = BlueSquare;
-                }else{
-                    gameover = true;
+                    PlacedBlockArray[x+1][y+1] = BlueSquare;
+                    PlacedBlockArray[x][y-1] = BlueSquare;
                 }
             }
         }
@@ -218,29 +218,29 @@ public class tetris extends gui
                     PlacedBlockArray[x-1][y-1] = BlueSquare;
                     PlacedBlockArray[x+1][y-1] = BlueSquare;
                     PlacedBlockArray[x-1][y] = BlueSquare;
-                }else{
-                    gameover = true;
                 }
             }
         }
     }
 
-    boolean LCollisionCheck(int x, int y){
+    //L block collision
+    boolean LDownCollisionCheck(int x, int y){
+        System.out.println(rotation);
         try{
             if(rotation == 1){
-                if(ImageArray[x][y+1] == BlackSquare && ImageArray[x+1][y+1] == BlackSquare && ImageArray[x][y+1] == BlackSquare){
+                if(ImageArray[x][y+2] == BlackSquare && ImageArray[x+1][y+2] == BlackSquare && ImageArray[x][y+2] == BlackSquare){
                     return true;
                 }else{
                     return false;
                 }
             }else if(rotation == 2){
-                if(ImageArray[x][y+1] == BlackSquare && ImageArray[x+1][y+2] == BlackSquare && ImageArray[x-1][y+1] == BlackSquare){
+                if(ImageArray[x][y+1] == BlackSquare && ImageArray[x+1][y+1] == BlackSquare && ImageArray[x-1][y+1] == BlackSquare){
                     return true;
                 }else{
                     return false;
                 }
             }else if(rotation == 3){
-                if(ImageArray[x][y-1] == BlackSquare && ImageArray[x+1][y+1] == BlackSquare){
+                if(ImageArray[x][y] == BlackSquare && ImageArray[x+1][y+2] == BlackSquare){
                     return true;
                 }else{
                     return false;
@@ -270,13 +270,11 @@ public class tetris extends gui
                 PlacedBlockArray[x][y-1] = BlueSquare;
                 PlacedBlockArray[x+1][y-1] = BlueSquare;
                 PlacedBlockArray[x+1][y] = BlueSquare;
-            }else{
-                gameover = true;
             }
         }
     }
 
-    boolean squareCollisionCheck(int x, int y){
+    boolean squareDownCollisionCheck(int x, int y){
         try{
             if(ImageArray[x][y+1] == BlackSquare && ImageArray[x+1][y+1] == BlackSquare){
                 return true;
@@ -291,7 +289,7 @@ public class tetris extends gui
     // key listener for controls
     public class MyClass  implements KeyListener {
         public void keyTyped(KeyEvent e) {
-            // Invoked when a key has been typed.
+
         }
 
         public void keyPressed(KeyEvent e) {
@@ -308,10 +306,12 @@ public class tetris extends gui
 
             if (e.getKeyCode() == KeyEvent.VK_D || e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 if(BlockFalling){
-                    if(FallingBlockX < tetrisWidth-2){
-                        if(PlacedBlockArray[(int)FallingBlockX+1][(int)FallingBlockY] == BlackSquare){
-                            FallingBlockX += 1;
-                        }
+                    boolean canMoveRight = false;
+                    for(int y = 0; y < tetrisHeight; y++){
+                        ;
+                    }
+                    if(canMoveRight){
+                        FallingBlockX += 1;
                     }
                 }
             }
