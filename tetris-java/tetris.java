@@ -18,6 +18,7 @@ public class tetris extends gui
     int tetrisHeight = 20;
     private ImageIcon ImageArray[][] = new ImageIcon [tetrisWidth][tetrisHeight+1];
     ImageIcon PlacedBlockArray[][] = new ImageIcon  [tetrisWidth][tetrisHeight];
+    ImageIcon fallingBlockArray[][] = new ImageIcon  [tetrisWidth][tetrisHeight];
     private int boardWidth = windowLength/3;
     private int boardX = (windowLength-boardWidth)/2;
     String FallingBlock = "empty";
@@ -53,6 +54,7 @@ public class tetris extends gui
             for(int y=0; y<tetrisHeight; y++){
                 ImageArray[x][y] = BlackSquare;
                 PlacedBlockArray[x][y] = BlackSquare;
+                fallingBlockArray[x][y] = BlackSquare;
             }
         }
     }
@@ -116,6 +118,9 @@ public class tetris extends gui
                 if(PlacedBlockArray[x][y] != BlackSquare){
                     ImageArray[x][y] = PlacedBlockArray[x][y];
                 }
+                if(fallingBlockArray[x][y] != BlackSquare){
+                    ImageArray[x][y] = fallingBlockArray[x][y];
+                }
             }
         }
     }
@@ -163,10 +168,10 @@ public class tetris extends gui
     void drawL(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
-                ImageArray[x][y] = BlueSquare;
-                ImageArray[x][y+1] = BlueSquare;
-                ImageArray[x][y+2] = BlueSquare;
-                ImageArray[x+1][y+2] = BlueSquare;
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x][y+2] = BlueSquare;
+                fallingBlockArray[x+1][y+2] = BlueSquare;
             }else{
                 if(y>0){
                     PlacedBlockArray[x][y-1] = BlueSquare;
@@ -178,10 +183,10 @@ public class tetris extends gui
         }
         if(rotation == 2){
             if(!place){
-                ImageArray[x][y] = BlueSquare;
-                ImageArray[x-1][y] = BlueSquare;
-                ImageArray[x+1][y] = BlueSquare;
-                ImageArray[x+1][y-1] = BlueSquare;
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x+1][y-1] = BlueSquare;
             }else{
                 if(y>0){
                     PlacedBlockArray[x][y] = BlueSquare;
@@ -193,10 +198,10 @@ public class tetris extends gui
         }
         if(rotation == 3){
             if(!place){
-                ImageArray[x+1][y] = BlueSquare;
-                ImageArray[x+1][y+1] = BlueSquare;
-                ImageArray[x+1][y+2] = BlueSquare;
-                ImageArray[x][y] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x+1][y+1] = BlueSquare;
+                fallingBlockArray[x+1][y+2] = BlueSquare;
+                fallingBlockArray[x][y] = BlueSquare;
             }else{
                 if(y>0){
                     PlacedBlockArray[x+1][y-1] = BlueSquare;
@@ -208,10 +213,10 @@ public class tetris extends gui
         }
         if(rotation == 4){
             if(!place){
-                ImageArray[x][y] = BlueSquare;
-                ImageArray[x-1][y] = BlueSquare;
-                ImageArray[x+1][y] = BlueSquare;
-                ImageArray[x-1][y+1] = BlueSquare;
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x-1][y+1] = BlueSquare;
             }else{
                 if(y>0){
                     PlacedBlockArray[x][y-1] = BlueSquare;
@@ -259,10 +264,10 @@ public class tetris extends gui
     //square block functions
     void drawSquare(int x, int y, boolean place){
         if(!place){
-            ImageArray[x][y] = BlueSquare;
-            ImageArray[x+1][y] = BlueSquare;
-            ImageArray[x+1][y+1] = BlueSquare;
-            ImageArray[x][y+1] = BlueSquare;
+            fallingBlockArray[x][y] = BlueSquare;
+            fallingBlockArray[x+1][y] = BlueSquare;
+            fallingBlockArray[x+1][y+1] = BlueSquare;
+            fallingBlockArray[x][y+1] = BlueSquare;
         }else{
             if(y>0){
                 PlacedBlockArray[x][y] = BlueSquare;
@@ -295,10 +300,22 @@ public class tetris extends gui
             // Invoked when a key has been pressed.
             if (e.getKeyCode() == KeyEvent.VK_A || e.getKeyCode() == KeyEvent.VK_LEFT) {
                 if(BlockFalling){
-                    if(FallingBlockX > 0){
-                        if(PlacedBlockArray[(int)FallingBlockX-1][(int)FallingBlockY] == BlackSquare){
-                            FallingBlockX -= 1;
+                    boolean canMoveLeft = true;
+                    for(int y = 0; y < tetrisHeight; y++){
+                        for(int x = 0; x < tetrisWidth; x++){
+                            if(ImageArray[x][y] == BlueSquare){
+                                if(x != 0){
+                                    if(PlacedBlockArray[x-1][y] == BlueSquare){
+                                        canMoveLeft = false;
+                                    }
+                                }else{
+                                    canMoveLeft = false;
+                                }
+                            }
                         }
+                    }
+                    if(canMoveLeft){
+                        FallingBlockX -= 1;
                     }
                 }
             }
@@ -307,10 +324,15 @@ public class tetris extends gui
                 if(BlockFalling){
                     boolean canMoveRight = true;
                     for(int y = 0; y < tetrisHeight; y++){
-                        if(ImageArray[tetrisWidth-1][y] == BlueSquare){
-                            if(PlacedBlockArray[tetrisWidth-1][y] != BlueSquare){
-                                canMoveRight = false;
-                                System.out.println("test");
+                        for(int x = 0; x < tetrisWidth; x++){
+                            if(ImageArray[x][y] == BlueSquare){
+                                if(x != tetrisWidth-1){
+                                    if(PlacedBlockArray[x+1][y] == BlueSquare){
+                                        canMoveRight = false;
+                                    }
+                                }else{
+                                    canMoveRight = false;
+                                }
                             }
                         }
                     }
