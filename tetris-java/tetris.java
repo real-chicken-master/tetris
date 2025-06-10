@@ -152,6 +152,9 @@ public class tetris extends gui
             }else{
                 BlockFalling = false;
                 drawSquare((int)FallingBlockX,(int)FallingBlockY,true);
+                if(FallingBlockY <= 0){
+                    gameover = true;
+                }
             }
         }
         if(FallingBlock == "L"){
@@ -159,8 +162,11 @@ public class tetris extends gui
                 FallingBlockY += speed;
                 drawL((int)FallingBlockX,(int)FallingBlockY,false);
             }else{
-                drawL((int)FallingBlockX,(int)FallingBlockY,true);
                 BlockFalling = false;
+                drawL((int)FallingBlockX,(int)FallingBlockY,true);
+                if(FallingBlockY <= 0){
+                    gameover = true;
+                }
             }
         }
     }
@@ -175,11 +181,21 @@ public class tetris extends gui
                 fallingBlockArray[x][y+2] = BlueSquare;
                 fallingBlockArray[x+1][y+2] = BlueSquare;
             }else{
-                if(y>0){
-                    PlacedBlockArray[x][y-1] = BlueSquare;
-                    PlacedBlockArray[x][y] = BlueSquare;
-                    PlacedBlockArray[x][y+1] = BlueSquare;
-                    PlacedBlockArray[x+1][y+1] = BlueSquare;
+                for(int temp = y-3; temp < y; temp ++){
+                    try{
+                        if(temp == y-3){
+                            PlacedBlockArray[x][y-1] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(temp == y-2){
+                            PlacedBlockArray[x][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    if(temp < y-2){
+                        PlacedBlockArray[x][y+1] = BlueSquare;
+                        PlacedBlockArray[x+1][y+1] = BlueSquare;
+                    }
                 }
             }
         }
@@ -190,11 +206,21 @@ public class tetris extends gui
                 fallingBlockArray[x+1][y] = BlueSquare;
                 fallingBlockArray[x+1][y-1] = BlueSquare;
             }else{
-                if(y>0){
-                    PlacedBlockArray[x][y] = BlueSquare;
-                    PlacedBlockArray[x-1][y] = BlueSquare;
-                    PlacedBlockArray[x+1][y] = BlueSquare;
-                    PlacedBlockArray[x+1][y-1] = BlueSquare;
+                for(int temp = y-3; temp < y; temp ++){
+                    try{
+                        if(temp == y-3){
+                            PlacedBlockArray[x][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(temp == y-2){
+                            PlacedBlockArray[x-1][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    if(temp < y-2){
+                        PlacedBlockArray[x+1][y] = BlueSquare;
+                        PlacedBlockArray[x+1][y-1] = BlueSquare;
+                    }
                 }
             }
         }
@@ -205,11 +231,21 @@ public class tetris extends gui
                 fallingBlockArray[x+1][y+2] = BlueSquare;
                 fallingBlockArray[x][y] = BlueSquare;
             }else{
-                if(y>0){
-                    PlacedBlockArray[x+1][y-1] = BlueSquare;
-                    PlacedBlockArray[x+1][y] = BlueSquare;
-                    PlacedBlockArray[x+1][y+1] = BlueSquare;
-                    PlacedBlockArray[x][y-1] = BlueSquare;
+                for(int temp = y-3; temp < y; temp ++){
+                    try{
+                        if(temp == y-3){
+                            PlacedBlockArray[x+1][y-1] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(temp == y-2){
+                            PlacedBlockArray[x+1][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    if(temp < y-2){
+                        PlacedBlockArray[x+1][y+1] = BlueSquare;
+                        PlacedBlockArray[x][y-1] = BlueSquare;
+                    }
                 }
             }
         }
@@ -220,11 +256,21 @@ public class tetris extends gui
                 fallingBlockArray[x+1][y] = BlueSquare;
                 fallingBlockArray[x-1][y+1] = BlueSquare;
             }else{
-                if(y>0){
-                    PlacedBlockArray[x][y-1] = BlueSquare;
-                    PlacedBlockArray[x-1][y-1] = BlueSquare;
-                    PlacedBlockArray[x+1][y-1] = BlueSquare;
-                    PlacedBlockArray[x-1][y] = BlueSquare;
+                for(int temp = y-3; temp < y; temp ++){
+                    try{
+                        if(temp == y-3){
+                            PlacedBlockArray[x][y-1] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(temp == y-2){
+                            PlacedBlockArray[x-1][y-1] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    if(temp < y-2){
+                        PlacedBlockArray[x+1][y-1] = BlueSquare;
+                        PlacedBlockArray[x-1][y] = BlueSquare;
+                    }
                 }
             }
         }
