@@ -139,7 +139,7 @@ public class tetris extends gui
     void addBlocks(){
         FallingBlockY = 0;
         FallingBlockX = 4;
-        FallingBlock = "Z";
+        FallingBlock = "l";
         rotation = 1;
         BlockFalling = true;
     }
@@ -181,6 +181,18 @@ public class tetris extends gui
                 }
             }
         }
+        if(FallingBlock == "l"){
+            drawl((int)FallingBlockX,(int)FallingBlockY,false);
+            if(collisionTest()){
+                FallingBlockY += speed;
+            }else{
+                BlockFalling = false;
+                drawl((int)FallingBlockX,(int)FallingBlockY,true);
+                if(FallingBlockY <= 0){
+                    gameover = true;
+                }
+            }
+        }
     }
 
     boolean collisionTest(){
@@ -201,6 +213,36 @@ public class tetris extends gui
             }
         }
         return temp;
+    }
+
+    //draw l block
+    void drawl(int x, int y, boolean place){
+        if(rotation == 1 || rotation ==  3){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x][y+2] = BlueSquare;
+                fallingBlockArray[x][y+3] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y+1] = BlueSquare;
+                PlacedBlockArray[x][y+2] = BlueSquare;
+                PlacedBlockArray[x][y+3] = BlueSquare;
+            }
+        }
+        if(rotation == 2 || rotation ==  4){
+            if(!place){
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x+2][y] = BlueSquare;
+            }else{
+                PlacedBlockArray[x-1][y] = BlueSquare;
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+                PlacedBlockArray[x+2][y] = BlueSquare;
+            }
+        }
     }
 
     //draw Z block
