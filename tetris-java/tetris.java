@@ -139,7 +139,7 @@ public class tetris extends gui
     void addBlocks(){
         FallingBlockY = 0;
         FallingBlockX = 4;
-        FallingBlock = "l";
+        FallingBlock = "RL";
         rotation = 1;
         BlockFalling = true;
     }
@@ -169,6 +169,18 @@ public class tetris extends gui
                 }
             }
         }
+        if(FallingBlock == "RL"){
+            drawRL((int)FallingBlockX,(int)FallingBlockY,false);
+            if(collisionTest()){
+                FallingBlockY += speed;
+            }else{
+                BlockFalling = false;
+                drawRL((int)FallingBlockX,(int)FallingBlockY,true);
+                if(FallingBlockY <= 0){
+                    gameover = true;
+                }
+            }
+        }
         if(FallingBlock == "Z"){
             drawZ((int)FallingBlockX,(int)FallingBlockY,false);
             if(collisionTest()){
@@ -176,6 +188,18 @@ public class tetris extends gui
             }else{
                 BlockFalling = false;
                 drawZ((int)FallingBlockX,(int)FallingBlockY,true);
+                if(FallingBlockY <= 0){
+                    gameover = true;
+                }
+            }
+        }
+        if(FallingBlock == "RZ"){
+            drawRZ((int)FallingBlockX,(int)FallingBlockY,false);
+            if(collisionTest()){
+                FallingBlockY += speed;
+            }else{
+                BlockFalling = false;
+                drawRZ((int)FallingBlockX,(int)FallingBlockY,true);
                 if(FallingBlockY <= 0){
                     gameover = true;
                 }
@@ -244,7 +268,63 @@ public class tetris extends gui
             }
         }
     }
-
+    
+    //draw reverse Z block
+    void drawRZ(int x, int y, boolean place){
+        if(rotation == 1){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x-1][y+1] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y+1] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+                PlacedBlockArray[x-1][y+1] = BlueSquare;
+            }
+        }
+        if(rotation == 2){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y-1] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x+1][y+1] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y-1] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+                PlacedBlockArray[x+1][y+1] = BlueSquare;
+            }
+        }
+        if(rotation == 3){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x+1][y+1] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y+1] = BlueSquare;
+                PlacedBlockArray[x-1][y] = BlueSquare;
+                PlacedBlockArray[x+1][y+1] = BlueSquare;
+            }
+        }
+        if(rotation == 4){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y-1] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x-1][y+1] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y-1] = BlueSquare;
+                PlacedBlockArray[x-1][y] = BlueSquare;
+                PlacedBlockArray[x-1][y+1] = BlueSquare;
+            }
+        }
+    }
+    
     //draw Z block
     void drawZ(int x, int y, boolean place){
         if(rotation == 1){
@@ -297,6 +377,108 @@ public class tetris extends gui
                 PlacedBlockArray[x][y-1] = BlueSquare;
                 PlacedBlockArray[x+1][y] = BlueSquare;
                 PlacedBlockArray[x+1][y+1] = BlueSquare;
+            }
+        }
+    }
+    
+    //draw reverse L block
+    void drawRL(int x, int y, boolean place){
+        if(rotation == 1){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x][y+2] = BlueSquare;
+                fallingBlockArray[x-1][y+2] = BlueSquare;
+            }else{
+                for(int blockLine = y-3; blockLine < y; blockLine ++){
+                    try{
+                        if(blockLine == y-3){
+                            PlacedBlockArray[x][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(blockLine == y-2){
+                            PlacedBlockArray[x][y+1] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    if(blockLine < y-2){
+                        PlacedBlockArray[x][y+2] = BlueSquare;
+                        PlacedBlockArray[x-1][y+2] = BlueSquare;
+                    }
+                }
+            }
+        }
+        if(rotation == 2){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x+1][y+1] = BlueSquare;
+            }else{
+                for(int blockLine = y-2; blockLine < y; blockLine ++){
+                    try{
+                        if(blockLine == y-2){
+                            PlacedBlockArray[x][y] = BlueSquare;
+                            PlacedBlockArray[x+1][y] = BlueSquare;
+                            PlacedBlockArray[x-1][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(blockLine == y-1){
+                            PlacedBlockArray[x+1][y+1] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                }
+            }
+        }
+        if(rotation == 3){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x][y+2] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+            }else{
+                for(int blockLine = y-3; blockLine < y; blockLine ++){
+                    try{
+                        if(blockLine == y-3){
+                            PlacedBlockArray[x+1][y] = BlueSquare;
+                            PlacedBlockArray[x][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(blockLine == y-2){
+                            PlacedBlockArray[x][y+1] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    if(blockLine < y-2){
+                        PlacedBlockArray[x][y+2] = BlueSquare;
+                    }
+                }
+            }
+        }
+        if(rotation == 4){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x-1][y-1] = BlueSquare;
+            }else{
+                for(int blockLine = y-3; blockLine < y; blockLine ++){
+                    try{
+                        if(blockLine == y-3){
+                            PlacedBlockArray[x][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    try{
+                        if(blockLine == y-2){
+                            PlacedBlockArray[x+1][y] = BlueSquare;
+                        }
+                    } catch(Exception e){}
+                    if(blockLine < y-2){
+                        PlacedBlockArray[x-1][y] = BlueSquare;
+                        PlacedBlockArray[x-1][y-1] = BlueSquare;
+                    }
+                }
             }
         }
     }
@@ -472,7 +654,7 @@ public class tetris extends gui
             }
 
             if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) {
-                speed = 0.5;
+                speed = 1;
             }
 
             if (e.getKeyCode() == KeyEvent.VK_Q) {
@@ -498,7 +680,7 @@ public class tetris extends gui
 
         public void keyReleased(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) {
-                speed = 0.03;
+                speed = baseSpeed;
             }
         }
     }
