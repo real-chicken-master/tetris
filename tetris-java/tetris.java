@@ -139,7 +139,7 @@ public class tetris extends gui
     void addBlocks(){
         FallingBlockY = 0;
         FallingBlockX = 4;
-        FallingBlock = "RL";
+        FallingBlock = "T";
         rotation = 1;
         BlockFalling = true;
     }
@@ -217,6 +217,18 @@ public class tetris extends gui
                 }
             }
         }
+        if(FallingBlock == "T"){
+            drawT((int)FallingBlockX,(int)FallingBlockY,false);
+            if(collisionTest()){
+                FallingBlockY += speed;
+            }else{
+                BlockFalling = false;
+                drawT((int)FallingBlockX,(int)FallingBlockY,true);
+                if(FallingBlockY <= 0){
+                    gameover = true;
+                }
+            }
+        }
     }
 
     boolean collisionTest(){
@@ -265,6 +277,62 @@ public class tetris extends gui
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x+1][y] = BlueSquare;
                 PlacedBlockArray[x+2][y] = BlueSquare;
+            }
+        }
+    }
+    
+    //draw T block
+    void drawT(int x, int y, boolean place){
+        if(rotation == 1){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y+1] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+                PlacedBlockArray[x-1][y] = BlueSquare;
+            }
+        }
+        if(rotation == 2){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y-1] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y-1] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+                PlacedBlockArray[x][y+1] = BlueSquare;
+            }
+        }
+        if(rotation == 3){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x+1][y] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x][y-1] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y-1] = BlueSquare;
+                PlacedBlockArray[x+1][y] = BlueSquare;
+                PlacedBlockArray[x-1][y] = BlueSquare;
+            }
+        }
+        if(rotation == 4){
+            if(!place){
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
+                fallingBlockArray[x][y-1] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+            }else{
+                PlacedBlockArray[x][y] = BlueSquare;
+                PlacedBlockArray[x][y+1] = BlueSquare;
+                PlacedBlockArray[x][y-1] = BlueSquare;
+                PlacedBlockArray[x-1][y] = BlueSquare;
             }
         }
     }
