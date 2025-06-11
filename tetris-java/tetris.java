@@ -29,6 +29,7 @@ public class tetris extends gui
     double speed = baseSpeed;
     boolean gameover = false;
     int rotation = 1; //1-4
+    String blockArray[] = {"l","L","RL","Z","RZ","T"};
     /**
      * Constructor for objects of class tetris
      */
@@ -139,7 +140,7 @@ public class tetris extends gui
     void addBlocks(){
         FallingBlockY = 0;
         FallingBlockX = 4;
-        FallingBlock = "T";
+        FallingBlock = blockArray[(int)Math.floor(Math.random()*6)];
         rotation = 1;
         BlockFalling = true;
     }
