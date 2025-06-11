@@ -381,7 +381,7 @@ public class tetris extends gui
         }
     }
     
-    //draw reverse L block
+    //draw reverse L block 
     void drawRL(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
