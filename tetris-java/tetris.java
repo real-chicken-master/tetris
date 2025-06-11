@@ -29,7 +29,7 @@ public class tetris extends gui
     double speed = baseSpeed;
     boolean gameover = false;
     int rotation = 1; //1-4
-    String blockArray[] = {"l","L","RL","Z","RZ","T"};
+    String blockArray[] = {"l","L","RL","Z","RZ","T","Square"};
     String blockList[] = new String [5];
     /**
      * Constructor for objects of class tetris
@@ -76,14 +76,14 @@ public class tetris extends gui
         g2.setColor(new Color(200,200,200));
         g2.fillRect(0,0,windowLength+10,windowHeight+100);
         //tetris background
-        g2.setColor(new Color(0,0,0));
-        for(int num = 0; num < blockList.length; num ++){
-            g2.drawString(blockList[num],100,100+(80*num));
-        }
         for(int x=0; x<tetrisWidth; x++){
             for(int y=0; y<tetrisHeight; y++){
                 ImageArray[x][y].paintIcon(this,g2,((windowLength/2)-(20*tetrisWidth))+x*imageWidth,y*imageHeight+imageHeight);
             }
+        }
+        g2.setColor(new Color(0,0,0));
+        for(int num = 1; num < blockList.length; num ++){
+            g2.drawString(blockList[num],100,100+(60*(num-1)));
         }
         g.drawImage(offScreenImage,0,0,null);
     }
@@ -98,11 +98,6 @@ public class tetris extends gui
             }
             if(isLine){
                 removeLine(y);
-            }
-        }
-        for(int x=0; x<tetrisWidth; x++){
-            if(PlacedBlockArray[x][0] == BlueSquare){
-
             }
         }
     }
@@ -145,9 +140,8 @@ public class tetris extends gui
     }
 
     void addBlocks(){
-        for(int num = blockList.length-2; num > -1; num --){
-            String otherBlock = blockList[num+1];
-            blockList[num] = otherBlock;
+        for (int num  = 0; num < blockList.length-1; num++){
+            blockList[num] = blockList[num+1];
         }
         blockList[blockList.length-1] = getBlock();
         FallingBlockY = 0;
@@ -158,7 +152,8 @@ public class tetris extends gui
     }
 
     String getBlock(){
-        return  blockArray[(int)Math.floor(Math.random()*6)];
+        String output = blockArray[(int)Math.floor(Math.random()*(blockArray.length))];
+        return output;
     }
 
     void moveBlocks(){
