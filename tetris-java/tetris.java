@@ -77,6 +77,9 @@ public class tetris extends gui
         g2.fillRect(0,0,windowLength+10,windowHeight+100);
         //tetris background
         g2.setColor(new Color(0,0,0));
+        for(int num = 0; num < blockList.length; num ++){
+            g2.drawString(blockList[num],100,100+(80*num));
+        }
         for(int x=0; x<tetrisWidth; x++){
             for(int y=0; y<tetrisHeight; y++){
                 ImageArray[x][y].paintIcon(this,g2,((windowLength/2)-(20*tetrisWidth))+x*imageWidth,y*imageHeight+imageHeight);
@@ -144,15 +147,12 @@ public class tetris extends gui
     void addBlocks(){
         for(int num = blockList.length-2; num > -1; num --){
             String otherBlock = blockList[num+1];
-            System.out.println(blockList[num]);
             blockList[num] = otherBlock;
-            System.out.println(blockList[num]);
         }
         blockList[blockList.length-1] = getBlock();
         FallingBlockY = 0;
         FallingBlockX = 4;
         FallingBlock = blockList[0];
-        System.out.println(FallingBlock);
         rotation = 1;
         BlockFalling = true;
     }
