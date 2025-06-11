@@ -30,6 +30,7 @@ public class tetris extends gui
     boolean gameover = false;
     int rotation = 1; //1-4
     String blockArray[] = {"l","L","RL","Z","RZ","T"};
+    String blockList[] = new String [5];
     /**
      * Constructor for objects of class tetris
      */
@@ -58,6 +59,9 @@ public class tetris extends gui
                 PlacedBlockArray[x][y] = BlackSquare;
                 fallingBlockArray[x][y] = BlackSquare;
             }
+        }
+        for (int num = 0; num < blockList.length; num ++){
+            blockList[num] = getBlock();
         }
     }
 
@@ -138,11 +142,23 @@ public class tetris extends gui
     }
 
     void addBlocks(){
+        for(int num = blockList.length-2; num > -1; num --){
+            String otherBlock = blockList[num+1];
+            System.out.println(blockList[num]);
+            blockList[num] = otherBlock;
+            System.out.println(blockList[num]);
+        }
+        blockList[blockList.length-1] = getBlock();
         FallingBlockY = 0;
         FallingBlockX = 4;
-        FallingBlock = blockArray[(int)Math.floor(Math.random()*6)];
+        FallingBlock = blockList[0];
+        System.out.println(FallingBlock);
         rotation = 1;
         BlockFalling = true;
+    }
+
+    String getBlock(){
+        return  blockArray[(int)Math.floor(Math.random()*6)];
     }
 
     void moveBlocks(){
@@ -281,7 +297,7 @@ public class tetris extends gui
             }
         }
     }
-    
+
     //draw T block
     void drawT(int x, int y, boolean place){
         if(rotation == 1){
@@ -337,7 +353,7 @@ public class tetris extends gui
             }
         }
     }
-    
+
     //draw reverse Z block
     void drawRZ(int x, int y, boolean place){
         if(rotation == 1){
@@ -393,7 +409,7 @@ public class tetris extends gui
             }
         }
     }
-    
+
     //draw Z block
     void drawZ(int x, int y, boolean place){
         if(rotation == 1){
@@ -449,7 +465,7 @@ public class tetris extends gui
             }
         }
     }
-    
+
     //draw reverse L block 
     void drawRL(int x, int y, boolean place){
         if(rotation == 1){
