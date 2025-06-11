@@ -1,0 +1,179 @@
+[33mcommit a0cbe1e432f0fab894d2b2862fa6981be63fd3de[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu Jun 12 11:38:50 2025 +1200
+
+    fixed BlockList
+
+[33mcommit 5e207a5e3ffc827a1cffc61d68a736e7bfb51b3b[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu Jun 12 10:34:06 2025 +1200
+
+    started to display the blockList
+
+[33mcommit 90f5f03dfb8692e7a265e27f4b52ce71c03e2d26[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu Jun 12 10:27:21 2025 +1200
+
+    added block list
+
+[33mcommit 0942aa2a7c9fccb6ec08c78cbd71d22ef77ec8ef[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Wed Jun 11 15:18:19 2025 +1200
+
+    made the falling block random
+
+[33mcommit 5c0dfcc4527b2f263c10577d21ddb69189458e35[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Wed Jun 11 15:08:43 2025 +1200
+
+    added T block
+
+[33mcommit 724f7c001ff49aa445a71d952add2f6fec0875f9[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Wed Jun 11 14:55:09 2025 +1200
+
+    added reverse L block
+
+[33mcommit 550480fac54a6e8b69b1fd30dbaea1c3b73b2f7a[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Wed Jun 11 14:54:01 2025 +1200
+
+    added reverse Z block
+
+[33mcommit 216bad208ad1ca2d2352e7edd7084bf57170e6ac[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Wed Jun 11 14:40:21 2025 +1200
+
+    added l block
+
+[33mcommit b8e6602e86a2cd72309d529d8918c04b209cca42[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue Jun 10 15:18:35 2025 +1200
+
+    added Z block
+
+[33mcommit b007529d8264ad1bae565be05bdeaf1013b898e9[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue Jun 10 15:09:10 2025 +1200
+
+    changed the way the collisions work so i dont have to do more work later
+
+[33mcommit fbfc15d7d8bb9d2e737a1bda1ff5a31e3a612f5c[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue Jun 10 12:51:08 2025 +1200
+
+    fixed all L collisions
+
+[33mcommit 2d746d6350f0800c6e30b78cbab273a199c673f8[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon Jun 9 10:38:22 2025 +1200
+
+    gave the falling block its own array
+
+[33mcommit 582df3a4c2750aa561349b4eb0163a2359be97be[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon Jun 9 10:27:07 2025 +1200
+
+    trying to put the falling block in its own array
+
+[33mcommit a1df8c6599249970aeea3d897b7ba85b54d99184[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu Jun 5 11:58:26 2025 +1200
+
+    stoped right movement going thorugh a wall
+
+[33mcommit 1371b653491ac9b740cb5a452cc9dbd7ddc02806[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu Jun 5 11:49:46 2025 +1200
+
+    fixed L block collisions
+
+[33mcommit 4b1b21d405ae89690a8cf4f5c62ef31ed2adf947[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue May 27 15:13:15 2025 +1200
+
+    added L block rotation and rotation collision
+
+[33mcommit 6f280f0cbe19dc2a0c767816b842ccca13f3ca1b[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue May 27 14:40:06 2025 +1200
+
+    fixed rows not falling when lines deleted
+
+[33mcommit 262a7711f9c5cb2dc49df387982e819f157773f7[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue May 27 12:54:26 2025 +1200
+
+    added L block
+
+[33mcommit 828cda2a69d93524c19d4100ec6d5f002b38ab45[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue May 27 12:38:36 2025 +1200
+
+    made lines disapear
+
+[33mcommit b085861a0de8a1a32c2a2eba9790aa8e2f29f026[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon May 26 10:24:15 2025 +1200
+
+    added a function to check for lines
+
+[33mcommit 0044ac26cbb9f32b9b569ff5ca1bc0bb910f5e3c[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon May 26 10:10:05 2025 +1200
+
+    added rotate block
+
+[33mcommit ea93a2570adee3d60141089857acad8665b6c2ae[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu May 22 11:54:07 2025 +1200
+
+    added arrow keys to move the block
+
+[33mcommit f257e90dcd199bdb728d3c4ef032101d3b544984[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu May 22 11:41:17 2025 +1200
+
+    added move block left,right and increase fall speed with a,d,s
+
+[33mcommit 2cafda62f6a8adfadba2e99f6d21f4e8baf772b7[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Thu May 22 11:15:49 2025 +1200
+
+    added gameover and square collisions
+
+[33mcommit 3f66a078e32d4c3c5fb652b3d147fa1d8cdf22ae[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon May 19 10:28:02 2025 +1200
+
+    added square collisons
+
+[33mcommit 6e08adde6a96743dbbdb352576794c67094f5aec[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon May 19 10:20:25 2025 +1200
+
+    started to add collisions
+
+[33mcommit ff808fe4e01ca83c2c0da0ca8b3e372f60c7baf8[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon May 19 10:11:29 2025 +1200
+
+    made square block and gravity
+
+[33mcommit df274938c777f8d25a4038f66dbfa3e741644e17[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Mon May 19 09:59:10 2025 +1200
+
+    made the background and 2d array
+
+[33mcommit 1153cbfd5c92725bee0222aedfcaca64fc52e22b[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue May 13 14:55:36 2025 +1200
+
+    update readme
+
+[33mcommit e32338503c7db92cab4b6952812b8d3df172718e[m
+Author: real-chicken-master <aomkennedy@gmail.com>
+Date:   Tue May 13 13:10:02 2025 +1200
+
+    adding files

@@ -39,7 +39,7 @@ public class tetris extends gui
         addKeyListener(new MyClass());
         setup();
         while(!gameover){
-            repaint();
+            super.repaint();
         }
     }
 
@@ -410,27 +410,27 @@ public class tetris extends gui
         if(rotation == 1){
             if(!place){
                 fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
                 fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x][y+1] = BlueSquare;
                 fallingBlockArray[x+1][y+1] = BlueSquare;
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
-                PlacedBlockArray[x-1][y] = BlueSquare;
                 PlacedBlockArray[x+1][y+1] = BlueSquare;
+                PlacedBlockArray[x-1][y] = BlueSquare;
             }
         }
         if(rotation == 2){
             if(!place){
                 fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
                 fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x][y-1] = BlueSquare;
                 fallingBlockArray[x-1][y+1] = BlueSquare;
             }else{
-                PlacedBlockArray[x][y] = BlueSquare;
-                PlacedBlockArray[x][y-1] = BlueSquare;
-                PlacedBlockArray[x-1][y] = BlueSquare;
-                PlacedBlockArray[x-1][y+1] = BlueSquare;
+                fallingBlockArray[x][y] = BlueSquare;
+                fallingBlockArray[x-1][y] = BlueSquare;
+                fallingBlockArray[x][y-1] = BlueSquare;
+                fallingBlockArray[x-1][y+1] = BlueSquare;
             }
         }
         if(rotation == 3){
@@ -470,22 +470,16 @@ public class tetris extends gui
                 fallingBlockArray[x][y+2] = BlueSquare;
                 fallingBlockArray[x-1][y+2] = BlueSquare;
             }else{
-                for(int blockLine = y-3; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-3){
-                            PlacedBlockArray[x][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x][y+1] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    if(blockLine < y-2){
-                        PlacedBlockArray[x][y+2] = BlueSquare;
-                        PlacedBlockArray[x-1][y+2] = BlueSquare;
-                    }
-                }
+                try{
+                    PlacedBlockArray[x][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x][y+1] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x][y+2] = BlueSquare;
+                    PlacedBlockArray[x-1][y+2] = BlueSquare;
+                } catch(Exception e){}
             }
         }
         if(rotation == 2){
@@ -495,20 +489,14 @@ public class tetris extends gui
                 fallingBlockArray[x-1][y] = BlueSquare;
                 fallingBlockArray[x+1][y+1] = BlueSquare;
             }else{
-                for(int blockLine = y-2; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x][y] = BlueSquare;
-                            PlacedBlockArray[x+1][y] = BlueSquare;
-                            PlacedBlockArray[x-1][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-1){
-                            PlacedBlockArray[x+1][y+1] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                }
+                try{
+                    PlacedBlockArray[x][y] = BlueSquare;
+                    PlacedBlockArray[x+1][y] = BlueSquare;
+                    PlacedBlockArray[x-1][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x+1][y+1] = BlueSquare;
+                } catch(Exception e){}
             }
         }
         if(rotation == 3){
@@ -518,22 +506,16 @@ public class tetris extends gui
                 fallingBlockArray[x][y+2] = BlueSquare;
                 fallingBlockArray[x+1][y] = BlueSquare;
             }else{
-                for(int blockLine = y-3; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-3){
-                            PlacedBlockArray[x+1][y] = BlueSquare;
-                            PlacedBlockArray[x][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x][y+1] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    if(blockLine < y-2){
-                        PlacedBlockArray[x][y+2] = BlueSquare;
-                    }
-                }
+                try{
+                    PlacedBlockArray[x+1][y] = BlueSquare;
+                    PlacedBlockArray[x][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x][y+1] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x][y+2] = BlueSquare;
+                }catch(Exception e){}
             }
         }
         if(rotation == 4){
@@ -543,22 +525,14 @@ public class tetris extends gui
                 fallingBlockArray[x-1][y] = BlueSquare;
                 fallingBlockArray[x-1][y-1] = BlueSquare;
             }else{
-                for(int blockLine = y-3; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-3){
-                            PlacedBlockArray[x][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x+1][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    if(blockLine < y-2){
-                        PlacedBlockArray[x-1][y] = BlueSquare;
-                        PlacedBlockArray[x-1][y-1] = BlueSquare;
-                    }
-                }
+                try{
+                    PlacedBlockArray[x-1][y] = BlueSquare;
+                    PlacedBlockArray[x][y] = BlueSquare;
+                    PlacedBlockArray[x+1][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x-1][y-1] = BlueSquare;
+                } catch(Exception e){}
             }
         }
     }
@@ -572,22 +546,16 @@ public class tetris extends gui
                 fallingBlockArray[x][y+2] = BlueSquare;
                 fallingBlockArray[x+1][y+2] = BlueSquare;
             }else{
-                for(int blockLine = y-3; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-3){
-                            PlacedBlockArray[x][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x][y+1] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    if(blockLine < y-2){
-                        PlacedBlockArray[x][y+2] = BlueSquare;
-                        PlacedBlockArray[x+1][y+2] = BlueSquare;
-                    }
-                }
+                try{
+                    PlacedBlockArray[x][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x][y+1] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x][y+2] = BlueSquare;
+                    PlacedBlockArray[x+1][y+2] = BlueSquare;
+                } catch(Exception e){}
             }
         }
         if(rotation == 2){
@@ -597,20 +565,14 @@ public class tetris extends gui
                 fallingBlockArray[x+1][y] = BlueSquare;
                 fallingBlockArray[x+1][y-1] = BlueSquare;
             }else{
-                for(int blockLine = y-2; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x][y] = BlueSquare;
-                            PlacedBlockArray[x-1][y] = BlueSquare;
-                            PlacedBlockArray[x+1][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-1){
-                            PlacedBlockArray[x+1][y-1] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                }
+                try{
+                    PlacedBlockArray[x][y] = BlueSquare;
+                    PlacedBlockArray[x-1][y] = BlueSquare;
+                    PlacedBlockArray[x+1][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x+1][y-1] = BlueSquare;
+                } catch(Exception e){}
             }
         }
         if(rotation == 3){
@@ -620,22 +582,16 @@ public class tetris extends gui
                 fallingBlockArray[x+1][y+2] = BlueSquare;
                 fallingBlockArray[x][y] = BlueSquare;
             }else{
-                for(int blockLine = y-3; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-3){
-                            PlacedBlockArray[x+1][y] = BlueSquare;
-                            PlacedBlockArray[x][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x+1][y+1] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    if(blockLine < y-2){
-                        PlacedBlockArray[x+1][y+2] = BlueSquare;
-                    }
-                }
+                try{
+                    PlacedBlockArray[x+1][y] = BlueSquare;
+                    PlacedBlockArray[x][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x+1][y+1] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x+1][y+2] = BlueSquare;
+                } catch(Exception e){}
             }
         }
         if(rotation == 4){
@@ -645,22 +601,14 @@ public class tetris extends gui
                 fallingBlockArray[x+1][y] = BlueSquare;
                 fallingBlockArray[x-1][y+1] = BlueSquare;
             }else{
-                for(int blockLine = y-3; blockLine < y; blockLine ++){
-                    try{
-                        if(blockLine == y-3){
-                            PlacedBlockArray[x][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    try{
-                        if(blockLine == y-2){
-                            PlacedBlockArray[x-1][y] = BlueSquare;
-                        }
-                    } catch(Exception e){}
-                    if(blockLine < y-2){
-                        PlacedBlockArray[x+1][y] = BlueSquare;
-                        PlacedBlockArray[x-1][y+1] = BlueSquare;
-                    }
-                }
+                try{
+                    PlacedBlockArray[x][y] = BlueSquare;
+                    PlacedBlockArray[x+1][y] = BlueSquare;
+                    PlacedBlockArray[x-1][y] = BlueSquare;
+                } catch(Exception e){}
+                try{
+                    PlacedBlockArray[x-1][y+1] = BlueSquare;
+                } catch(Exception e){}
             }
         }
     }

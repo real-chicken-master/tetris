@@ -48,10 +48,6 @@ public class gui extends JFrame implements ActionListener {
         menuItem.addActionListener(this);
         menu.add(menuItem);
 
-        menuItem=new JMenuItem("update");
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
-
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(windowLength,windowHeight));
         screen = new Canvas();
@@ -61,7 +57,6 @@ public class gui extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         String cmd=e.getActionCommand();
-        repaint();
     }
 
 }    
