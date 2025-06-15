@@ -266,11 +266,14 @@ public class tetris extends gui
     //draw l block
     void drawl(int x, int y, boolean place){
         if(rotation == 1 || rotation ==  3){
+            if(x<0){
+                x++;
+            }
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x][y+2] = BlueSquare;
-                fallingBlockArray[x][y+3] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x,y+2);
+                putinfallingblockArray(x,y+3);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
@@ -280,10 +283,10 @@ public class tetris extends gui
         }
         if(rotation == 2 || rotation ==  4){
             if(!place){
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x+2][y] = BlueSquare;
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x+2,y);
             }else{
                 PlacedBlockArray[x-1][y] = BlueSquare;
                 PlacedBlockArray[x][y] = BlueSquare;
@@ -297,10 +300,10 @@ public class tetris extends gui
     void drawT(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x-1,y);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
@@ -310,10 +313,10 @@ public class tetris extends gui
         }
         if(rotation == 2){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y-1);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y-1] = BlueSquare;
@@ -323,10 +326,10 @@ public class tetris extends gui
         }
         if(rotation == 3){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x,y-1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y-1] = BlueSquare;
@@ -336,10 +339,10 @@ public class tetris extends gui
         }
         if(rotation == 4){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x,y-1);
+                putinfallingblockArray(x-1,y);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
@@ -353,10 +356,10 @@ public class tetris extends gui
     void drawRZ(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x-1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x-1,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
@@ -366,10 +369,10 @@ public class tetris extends gui
         }
         if(rotation == 2){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x+1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y-1);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x+1,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y-1] = BlueSquare;
@@ -379,10 +382,10 @@ public class tetris extends gui
         }
         if(rotation == 3){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x+1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x+1,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
@@ -392,10 +395,10 @@ public class tetris extends gui
         }
         if(rotation == 4){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x-1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y-1);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x-1,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y-1] = BlueSquare;
@@ -409,10 +412,10 @@ public class tetris extends gui
     void drawZ(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x+1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x+1,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
@@ -422,23 +425,23 @@ public class tetris extends gui
         }
         if(rotation == 2){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
-                fallingBlockArray[x-1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x,y-1);
+                putinfallingblockArray(x-1,y+1);
             }else{
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
-                fallingBlockArray[x-1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x,y-1);
+                putinfallingblockArray(x-1,y+1);
             }
         }
         if(rotation == 3){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x-1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x-1,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y+1] = BlueSquare;
@@ -448,10 +451,10 @@ public class tetris extends gui
         }
         if(rotation == 4){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y-1] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x+1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y-1);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x+1,y+1);
             }else{
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x][y-1] = BlueSquare;
@@ -465,9 +468,9 @@ public class tetris extends gui
     void drawRL(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x][y+2] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x,y+2);
                 fallingBlockArray[x-1][y+2] = BlueSquare;
             }else{
                 try{
@@ -484,10 +487,10 @@ public class tetris extends gui
         }
         if(rotation == 2){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x+1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x+1,y+1);
             }else{
                 try{
                     PlacedBlockArray[x][y] = BlueSquare;
@@ -501,10 +504,10 @@ public class tetris extends gui
         }
         if(rotation == 3){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x][y+2] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x,y+2);
+                putinfallingblockArray(x+1,y);
             }else{
                 try{
                     PlacedBlockArray[x+1][y] = BlueSquare;
@@ -520,9 +523,9 @@ public class tetris extends gui
         }
         if(rotation == 4){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x-1,y);
                 fallingBlockArray[x-1][y-1] = BlueSquare;
             }else{
                 try{
@@ -541,10 +544,10 @@ public class tetris extends gui
     void drawL(int x, int y, boolean place){
         if(rotation == 1){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x][y+1] = BlueSquare;
-                fallingBlockArray[x][y+2] = BlueSquare;
-                fallingBlockArray[x+1][y+2] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x,y+1);
+                putinfallingblockArray(x,y+2);
+                putinfallingblockArray(x+1,y+2);
             }else{
                 try{
                     PlacedBlockArray[x][y] = BlueSquare;
@@ -560,9 +563,9 @@ public class tetris extends gui
         }
         if(rotation == 2){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x+1,y);
                 fallingBlockArray[x+1][y-1] = BlueSquare;
             }else{
                 try{
@@ -577,10 +580,10 @@ public class tetris extends gui
         }
         if(rotation == 3){
             if(!place){
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x+1][y+1] = BlueSquare;
-                fallingBlockArray[x+1][y+2] = BlueSquare;
-                fallingBlockArray[x][y] = BlueSquare;
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x+1,y+1);
+                putinfallingblockArray(x+1,y+2);
+                putinfallingblockArray(x,y);
             }else{
                 try{
                     PlacedBlockArray[x+1][y] = BlueSquare;
@@ -596,10 +599,10 @@ public class tetris extends gui
         }
         if(rotation == 4){
             if(!place){
-                fallingBlockArray[x][y] = BlueSquare;
-                fallingBlockArray[x-1][y] = BlueSquare;
-                fallingBlockArray[x+1][y] = BlueSquare;
-                fallingBlockArray[x-1][y+1] = BlueSquare;
+                putinfallingblockArray(x,y);
+                putinfallingblockArray(x-1,y);
+                putinfallingblockArray(x+1,y);
+                putinfallingblockArray(x-1,y+1);
             }else{
                 try{
                     PlacedBlockArray[x][y] = BlueSquare;
@@ -616,16 +619,26 @@ public class tetris extends gui
     //square block functions
     void drawSquare(int x, int y, boolean place){
         if(!place){
-            fallingBlockArray[x][y] = BlueSquare;
-            fallingBlockArray[x+1][y] = BlueSquare;
-            fallingBlockArray[x+1][y+1] = BlueSquare;
-            fallingBlockArray[x][y+1] = BlueSquare;
+            putinfallingblockArray(x,y);
+            putinfallingblockArray(x+1,y);
+            putinfallingblockArray(x+1,y+1);
+            putinfallingblockArray(x,y+1);
         }else{
             if(y>0){
                 PlacedBlockArray[x][y+1] = BlueSquare;
                 PlacedBlockArray[x][y] = BlueSquare;
                 PlacedBlockArray[x+1][y] = BlueSquare;
                 PlacedBlockArray[x+1][y+1] = BlueSquare;
+            }
+        }
+    }
+
+    void putinfallingblockArray(int placeX, int placeY){
+        if(placeY>-1){
+            if(placeX>-1){
+                if(placeX<tetrisWidth){
+                    fallingBlockArray[placeX][placeY] = BlueSquare;
+                }
             }
         }
     }
