@@ -643,6 +643,37 @@ public class tetris extends gui
         }
     }
 
+    boolean blockCanRotate(String direction){
+        boolean canrotate = true;
+        if (direction == "L"){
+            for(int y = 0; y < tetrisHeight; y++){
+                for(int x = 0; x < tetrisWidth; x++){
+                    if(fallingBlockArray[0][y] == BlueSquare){
+                        if(y>0){
+                            if(fallingBlockArray[x][y] == BlueSquare && fallingBlockArray[x][y-1] == BlueSquare){
+                                canrotate = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }else if (direction == "R"){
+            for(int y = 0; y < tetrisHeight; y++){
+                for(int x = 0; x < tetrisWidth; x++){
+                    if(fallingBlockArray[tetrisWidth-1][y] == BlueSquare){
+                        if(y>tetrisHeight-1){
+                            if(fallingBlockArray[x][y] == BlueSquare && fallingBlockArray[x][y+1] == BlueSquare){
+                                canrotate = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return canrotate;
+
+    }
+
     // key listener for controls
     public class MyClass  implements KeyListener {
         public void keyTyped(KeyEvent e) {
@@ -700,20 +731,24 @@ public class tetris extends gui
 
             if (e.getKeyCode() == KeyEvent.VK_Q) {
                 if(BlockFalling){
-                    if(rotation < 4){
-                        rotation += 1;
-                    }else{
-                        rotation = 1;
+                    if(blockCanRotate("L")){
+                        if(rotation < 4){
+                            rotation += 1;
+                        }else{
+                            rotation = 1;
+                        }
                     }
                 }
             }
 
             if (e.getKeyCode() == KeyEvent.VK_E) {
                 if(BlockFalling){
-                    if(rotation > 1){
-                        rotation -= 1;
-                    }else{
-                        rotation = 4;
+                    if(blockCanRotate("R")){
+                        if(rotation > 1){
+                            rotation -= 1;
+                        }else{
+                            rotation = 4;
+                        }
                     }
                 }
             }
