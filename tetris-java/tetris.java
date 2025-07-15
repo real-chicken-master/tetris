@@ -25,7 +25,7 @@ public class tetris extends gui
     double FallingBlockX;
     double FallingBlockY;
     boolean BlockFalling = false;
-    double baseSpeed = 0.03;
+    double baseSpeed = 0.01;
     double speed = baseSpeed;
     boolean gameover = false;
     int rotation = 1; //1-4
@@ -85,6 +85,12 @@ public class tetris extends gui
         for(int num = 1; num < blockList.length; num ++){
             g2.drawString(blockList[num],100,100+(60*(num-1)));
         }
+        g2.drawString("controls",70,500);
+        g2.drawString("left = A or left arrow",45,520);
+        g2.drawString("right = D or right arrow",35,540);
+        g2.drawString("down faster = S or down arrow",15,560);
+        g2.drawString("rotate left = Q",60,580);
+        g2.drawString("rotate right = E",55,600);
         g.drawImage(offScreenImage,0,0,null);
     }
 
@@ -726,7 +732,7 @@ public class tetris extends gui
             }
 
             if (e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN) {
-                speed = 1;
+                speed = 0.6;
             }
 
             if (e.getKeyCode() == KeyEvent.VK_Q) {
