@@ -668,7 +668,6 @@ public class tetris extends gui
                 for(int x = 0; x < tetrisWidth; x++){
                     if(fallingBlockArray[tetrisWidth-1][y] == BlueSquare){
                         if(y<tetrisHeight-1){
-                            System.out.println("test");
                             if(fallingBlockArray[x][y] == BlueSquare && fallingBlockArray[x][y-1] == BlueSquare){
                                 canrotate = false;
                             }
